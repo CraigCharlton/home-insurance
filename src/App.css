@@ -7,20 +7,24 @@ header {
 }
 
 .App-header h1 {
-  padding-left: 25px;
+  padding-left: 20px;
   text-transform: uppercase;
 }
 
 p {
-  font-size: 20px
-}
-
-h1, h3 {
-  font-size: 36px;
+  font-size: 18px
 }
 
 h2 {
-  font-size: 46px;
+  font-size: 38px;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+h1, h3 {
+  font-size: 30px;
 }
 
 h1, h2, h3 {
@@ -28,7 +32,7 @@ h1, h2, h3 {
 }
 
 main {
-  padding: 10px 25px;
+  padding: 10px 20px;
 }
 
 .quote {
@@ -38,31 +42,78 @@ main {
 
 .box.details {
   border: none;
+  margin-right: 54px !important;
+  padding: 0;
 }
 
 .box.price {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
   text-align: center;
 }
 
+.box.price p {
+  max-width: 400px;
+}
+
+.heading2 {
+  width: 100%;
+}
+
 .currency {
-  font-size: 80px;
+  font-size: 62px;
+}
+
+.extras {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .box {
   border: 1px solid #000;
   margin-bottom: 10px;
-  padding: 25px;
-  width: 45%;
+  min-height: 200px;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+
+  @media screen and (min-width: 1200px) {
+    width: 45%;
+  }
 }
 
 .box:nth-child(odd) {
-  margin-right: 10px;
+  @media screen and (min-width: 1200px) {
+    margin-right: 10px;
+  }
+}
+
+.box-price {
+  font-size: 18px;
+  position: absolute;
+  right: 20px;
+  top: 32px;
+}
+
+.per-date {
+  font-size: 28px;
+  margin: 5px;
 }
 
 button {
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  max-width: 300px;
-  padding: 10px;
+  padding: 15px;
+}
+
+.quote-button {
+  min-width: 400px;
+}
+
+.extras-button {
+  bottom: 20px;
+  position: absolute;
+  right: 20px;
 }
