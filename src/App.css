@@ -1,0 +1,68 @@
+.App {
+  text-align: left;
+}
+
+header {
+  border-bottom: 1px solid #000;
+}
+
+.App-header h1 {
+  padding-left: 25px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 20px
+}
+
+h1, h3 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 46px;
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+main {
+  padding: 10px 25px;
+}
+
+.quote {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box.details {
+  border: none;
+}
+
+.box.price {
+  text-align: center;
+}
+
+.currency {
+  font-size: 80px;
+}
+
+.box {
+  border: 1px solid #000;
+  margin-bottom: 10px;
+  padding: 25px;
+  width: 45%;
+}
+
+.box:nth-child(odd) {
+  margin-right: 10px;
+}
+
+button {
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  max-width: 300px;
+  padding: 10px;
+}
