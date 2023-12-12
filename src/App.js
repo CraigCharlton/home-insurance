@@ -8,12 +8,20 @@ function App() {
 
   const addExtra = (addon) => {
     const updatedAddons = [...addons];
+    const updatedQuote = [...quotes];
+
+    updatedQuote[0].monthlyPrice = updatedQuote[0].monthlyPrice + addon.monthlyPrice;
+    updatedQuote[0].annualPrice = updatedQuote[0].annualPrice + addon.annualPrice;
     addon["added"] = true;
     setAddons(updatedAddons);
   }
 
   const removeExtra = (addon) => {
     const updatedAddons = [...addons];
+    const updatedQuote = [...quotes];
+
+    updatedQuote[0].monthlyPrice = updatedQuote[0].monthlyPrice - addon.monthlyPrice;
+    updatedQuote[0].annualPrice = updatedQuote[0].annualPrice - addon.annualPrice;
     addon["added"] = false;
     setAddons(updatedAddons);
   }
@@ -49,7 +57,7 @@ function App() {
             </div>
             {isMonthly && (
               <div className="box price">
-                <span className="currency">£{quote.monthlyPrice}</span>
+                <span className="currency">£{quote.monthlyPrice.toFixed(2)}</span>
                 <p className="per-date">per month</p>
                 <p>This price includes Insurance Premium Tax at the current rate. No charge for paying monthly.</p>
                 <button className="quote-button" onClick={() => setIsMonthly(false)}>Switch to annual</button>
@@ -57,7 +65,7 @@ function App() {
             )}
             {!isMonthly && (
               <div className="box price">
-                <span className="currency">£{quote.annualPrice}</span>
+                <span className="currency">£{quote.annualPrice.toFixed(2)}</span>
                 <p className="per-date">per year</p>
                 <p>This price includes Insurance Premium Tax at the current rate. No charge for paying monthly.</p>
                 <button className="quote-button" onClick={() => setIsMonthly(true)}>Switch to monthly</button>
@@ -71,7 +79,12 @@ function App() {
           {addons.map((addon) => (
             <div className="box" key={addon.title}>
               <h3>{addon.title}</h3>
-              <span className="box-price">£{addon.monthlyPrice} per month</span>
+              {isMonthly && (
+                <span className="box-price">£{addon.monthlyPrice} per month</span>
+              )}
+              {!isMonthly && (
+                <span className="box-price">£{addon.annualPrice} per year</span>
+              )}
               <p>{addon.text}</p>
               {!addon.added && (
                 <button
