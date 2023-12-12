@@ -117,3 +117,12 @@ button {
   position: absolute;
   right: 20px;
 }
+
+.add {
+  background-color: lightgreen;
+}
+
+.remove {
+  background-color: indianred;
+  color: white;
+}

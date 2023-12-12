@@ -53,7 +53,7 @@ function App() {
               <h2>Hey {quote.firstName},</h2>
               <p>Here is your quote for Royal & Sun Alliance, {quote.address1}, {quote.address2}</p>
               <p>Quote reference: {quote.quoteRef}</p>
-              <p>Covers starts on {quote.startDate}.</p>
+              <p>Covers starts on {quote.startDate.slice(0,10)}.</p>
             </div>
             {isMonthly && (
               <div className="box price">
@@ -88,7 +88,7 @@ function App() {
               <p>{addon.text}</p>
               {!addon.added && (
                 <button
-                  className="extras-button"
+                  className="extras-button add"
                   onClick={() => {
                     addExtra(addon);
                   }}>
@@ -97,7 +97,7 @@ function App() {
               )}
               {addon.added && (
                 <button
-                  className="extras-button"
+                  className="extras-button remove"
                   onClick={() => {
                     removeExtra(addon);
                   }}>
