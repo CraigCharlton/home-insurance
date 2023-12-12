@@ -2,9 +2,21 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 
 function App() {
-  let [quotes, setQuotes] = useState([]);
-  let [addons, setAddons] = useState([]);
-  let [isMonthly, setIsMonthly] = useState(true)
+  const [quotes, setQuotes] = useState([]);
+  const [addons, setAddons] = useState([]);
+  const [isMonthly, setIsMonthly] = useState(true);
+
+  const addExtra = (addon) => {
+    const updatedAddons = [...addons];
+    addon["added"] = true;
+    setAddons(updatedAddons);
+  }
+
+  const removeExtra = (addon) => {
+    const updatedAddons = [...addons];
+    addon["added"] = false;
+    setAddons(updatedAddons);
+  }
 
   useEffect(() => {
     fetch("http://localhost:5000/quote")
@@ -61,7 +73,24 @@ function App() {
               <h3>{addon.title}</h3>
               <span className="box-price">£{addon.monthlyPrice} per month</span>
               <p>{addon.text}</p>
-              <button className="extras-button">Select this extra</button>
+              {!addon.added && (
+                <button
+                  className="extras-button"
+                  onClick={() => {
+                    addExtra(addon);
+                  }}>
+                  Select this extra
+                </button>
+              )}
+              {addon.added && (
+                <button
+                  className="extras-button"
+                  onClick={() => {
+                    removeExtra(addon);
+                  }}>
+                  Remove this extra
+                </button>
+              )}
             </div>
           ))}
         </div>
